@@ -1,0 +1,51 @@
+import art 
+import random
+from game_data import data
+from replit import clear
+
+
+def format_data(sel):
+  account_name = sel['name']
+  account_desc = sel['description']
+  account_country = sel['country']
+  return f"{account_name} ,a {account_desc},from {account_country}, {sel['follower_count']}"
+
+def check(guess, sel_1_count, sel_2_count):
+  if sel_1_count > sel_2_count:
+   return guess == 'a'
+  elif sel_1_count < sel_2_count:
+    return guess == 'b'
+    
+score = 0
+game_over = False
+
+print(art.logo)  
+sel_2 = random.choice(data)
+
+while not game_over:
+
+  sel_1 = sel_2
+  sel_2 = random.choice(data)
+  if sel_1 == sel_2:
+     sel_2 = random.choice(data)
+    
+  print(f"Compare A: {format_data(sel_1)}")
+  print(art.vs)
+  print(f"Against B: {format_data(sel_2)}")
+  
+  guess = input("Who has more followers? Type A or B: ").lower()
+  
+  sel_1_count = sel_1["follower_count"]
+  sel_2_count = sel_2["follower_count"]
+  is_correct = check(guess, sel_1_count, sel_2_count )
+
+  clear()
+  print(art.logo)
+  if is_correct:
+    score+=1
+    print(f"Your'e Right!, your score is: {score} points.")
+  else:
+    print(f"You Lose! Your highest score was: {score} points.")
+    game_over = True
+
+  
