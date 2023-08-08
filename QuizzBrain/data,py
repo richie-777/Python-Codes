@@ -1,0 +1,121 @@
+question_data = [
+    {"question": "Linus Torvalds created Linux and Git.",
+     "correct_answer": "True"},
+
+    {"question": "Python is a compiled programming language.",
+     "correct_answer": "False"},
+
+    {"question": "An algorithm is a step-by-step procedure to solve a problem.",
+     "correct_answer": "True"},
+
+    {"question": "HTTP stands for HyperText Transfer Protocol.",
+     "correct_answer": "True"},
+
+    {"question": "RAM is a type of permanent storage.",
+     "correct_answer": "False"},
+
+    {"question": "Java is a purely object-oriented programming language.",
+     "correct_answer": "False"},
+
+    {"question": "IPv6 uses 32-bit addresses.",
+     "correct_answer": "False"},
+
+    {"question": "A firewall is used to protect against viruses.",
+     "correct_answer": "False"},
+
+    {"question": "Binary code is composed of 0s and 1s.",
+     "correct_answer": "True"},
+
+    {"question": "The C programming language was created by Dennis Ritchie.",
+     "correct_answer": "True"},
+
+    {"question": "HTML is a programming language.",
+     "correct_answer": "False"},
+
+    {"question": "A compiler translates high-level programming languages into machine code.",
+     "correct_answer": "True"},
+
+    {"question": "SQL is used for managing graphics and images.",
+     "correct_answer": "False"},
+
+    {"question": "A linked list is a linear data structure.",
+     "correct_answer": "True"},
+
+    {"question": "BitTorrent is a peer-to-peer file sharing protocol.",
+     "correct_answer": "True"},
+
+    {"question": "A byte consists of 4 bits.",
+     "correct_answer": "False"},
+
+    {"question": "The acronym PHP stands for Personal Home Page.",
+     "correct_answer": "False"},
+
+    {"question": "DNS stands for Domain Name System.",
+     "correct_answer": "True"},
+
+    {"question": "Machine learning is a subset of artificial intelligence.",
+     "correct_answer": "True"},
+
+    {"question": "An SSD is faster than an HDD.",
+     "correct_answer": "True"},
+
+    {"question": "JavaScript is a statically typed language.",
+     "correct_answer": "False"},
+
+    {"question": "A stack uses the Last-In-First-Out (LIFO) principle.",
+     "correct_answer": "True"},
+
+    {"question": "A VPN provides a physical connection to a network.",
+     "correct_answer": "False"},
+
+    {"question": "The Python programming language was named after a snake.",
+     "correct_answer": "True"},
+
+    {"question": "ASCII is a character encoding standard.",
+     "correct_answer": "True"},
+
+    {"question": "HTTPS is the secure version of HTTP.",
+     "correct_answer": "True"},
+
+    {"question": "Java and JavaScript are the same programming language.",
+     "correct_answer": "False"},
+
+    {"question": "Git is a distributed version control system.",
+     "correct_answer": "True"},
+
+    {"question": "A for loop is used for indefinite iteration.",
+     "correct_answer": "False"},
+
+    {"question": "Binary search can only be performed on sorted arrays.",
+     "correct_answer": "True"},
+
+    {"question": "CSS is used for backend web development.",
+     "correct_answer": "False"},
+
+    {"question": "A compiler directly executes the code it translates.",
+     "correct_answer": "False"},
+
+    {"question": "IPv4 addresses are 128 bits in length.",
+     "correct_answer": "False"},
+
+    {"question": "The primary function of an operating system is to manage hardware resources.",
+     "correct_answer": "True"},
+
+    {"question": "Python is considered a high-level programming language.",
+     "correct_answer": "True"},
+
+    {"question": "A switch operates at the Network Layer (Layer 3) of the OSI model.",
+     "correct_answer": "False"},
+
+    {"question": "Python uses curly braces {} to indicate code blocks.",
+     "correct_answer": "False"},
+
+    {"question": "The concept of virtual memory is to provide more RAM than physically available.",
+     "correct_answer": "True"},
+
+    {"question": "API stands for Application Programming Interface.",
+     "correct_answer": "True"},
+
+    {"question": "UDP is a connection-oriented protocol.",
+     "correct_answer": "False"}
+]
