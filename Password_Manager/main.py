@@ -2,11 +2,14 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import pyperclip
+import json
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate():
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+               'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+               'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
@@ -19,36 +22,74 @@ def generate():
 
     rnd_password = "".join(password_list)
 
-    password.delete(0,END)
+    password.delete(0, END)
     password.insert(0, rnd_password)
 
     pyperclip.copy(rnd_password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 
 def clear():
-    website.delete(0, END)
+    website_entry.delete(0, END)
     password.delete(0, END)
 
 
 def save():
-    web = website.get()
+    web = website_entry.get().lower()
     email = user.get()
     pwd = password.get()
+
+    new_data = {
+        web: {
+            'email': email,
+            'password': pwd,
+        }
+    }
 
     if len(web) == 0 or len(pwd) == 0:
         messagebox.showwarning(title='Warning', message="Enter all the required Fields")
     else:
-        messagebox.askokcancel(title=f'{web}', message=f"Details Entered: \nEmail : {email}"
-                                                       f"\nPassword : {pwd}\nOk to Save?")
-        with open('data.txt', mode='a') as saved:
-            saved.write(f" Website: {web} | email: {email} | password: {pwd}\n")
+
+        try:
+            with open('data.json', mode='r') as saved:
+                # read old data
+                data = json.load(saved)
+        except FileNotFoundError:
+            with open('data.json', mode='w') as saved:
+                json.dump(new_data, saved, indent=4)
+        else:
+            # update old data with new data
+            data.update(new_data)
+
+            with open('data.json', mode='w') as saved:
+                # saving updated data
+                json.dump(data, saved, indent=4)
+        finally:
             clear()
-        # messagebox.showinfo("Details Copied to ClipBoard")
+
+
+# ---------------------------- PASSWORD FINDER ------------------------------- #
+def password_finder():
+    website = website_entry.get().lower()
+    try:
+        with open('data.json') as saved:
+            data = json.load(saved)
+    except FileNotFoundError:
+        messagebox.showinfo(title='Error', message='No Data File found')
+
+    else:
+        if website in data:
+            email = data[website]['email']
+            pwd = data[website]['password']
+            messagebox.showinfo(title=website, message=f'Email : {email}\nPassword : {pwd}\n')
+        else:
+            messagebox.showinfo(title="Error", message=f'No details for {website} Exists')
 
 
 # ---------------------------- UI SETUP ------------------------------- #
+
 
 window = Tk()
 window.title('Password Manager')
@@ -68,9 +109,9 @@ label2.grid(column=0, row=2)
 label3 = Label(text="Password:")
 label3.grid(column=0, row=3)
 
-website = Entry(width=46)
-website.grid(column=1, row=1, columnspan=2)
-website.focus()
+website_entry = Entry(width=28)
+website_entry.grid(column=1, row=1, columnspan=1)
+website_entry.focus()
 
 user = Entry(width=46)
 user.grid(column=1, row=2, columnspan=2)
@@ -83,9 +124,9 @@ button1 = Button(text='Generate Password', command=generate)
 button1.grid(column=2, row=3)
 
 button2 = Button(text='Add', width=46, command=save)
-button2.grid(column=1, row=4, columnspan=2)
+button2.grid(column=1, row=4, columnspan=4)
 
-# with open('data.txt', mode='a') as save:
-#     save.append(add())
+button3 = Button(text='Search', width=16, command=password_finder)
+button3.grid(column=2, row=1, columnspan=2)
 
 window.mainloop()
