@@ -1,0 +1,7 @@
+Dear [name],
+
+Happy Birthday!
+
+Have a great day!
+
+- PYTHON

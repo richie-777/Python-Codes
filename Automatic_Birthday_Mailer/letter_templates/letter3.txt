@@ -1,0 +1,7 @@
+Dear [name],
+
+I wish you all the happy birthday today!
+
+Remember to eat the whole cake [name]!
+
+- PYTHON
